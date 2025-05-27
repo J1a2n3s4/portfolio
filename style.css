@@ -1,0 +1,61 @@
+body{
+    background-image: url("bgpattern.png");
+
+    color: #a7d1cb;
+    font-family: courier;
+    font-weight: 900;
+}
+h1{
+    font-size: 3rem;
+}
+h2{
+    text-align: center;
+    font-size:xx-large;
+}
+h3{
+    margin-top: 0;
+}
+a:link{
+    color: azure;
+}
+a:visited{
+    color: rgb(126, 143, 143)cb;
+}
+
+p{
+    width: 40%;
+}
+
+
+main{
+    width: 100%;
+    padding-top: 20px;
+    background-color: rgba(0,0,0,0.2);
+
+}
+
+iframe{
+    position: relative;
+    margin: auto;
+}
+
+article{
+    background-color: rgba(0,0,0,0.2);
+    padding: 15px;
+    width: 700px;
+    margin: 50px;
+}
+
+section{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header{
+    padding: 40px;
+    background-color: #1a1d1a;
+    color: aliceblue;
+    text-align: center;
+}

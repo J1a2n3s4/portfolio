@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raycaster JB</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="raycaster.js"></script>
+</head>
+<body>
+    <div id="light_changes">
+        <button type="button" id="lightbutton" onclick="lighten()">GO LIGHT!</button>
+        <button type="button" id="darkbutton" onclick="darken()">GO DARK...</button>
+    </div>
+    <header>
+    <h1>RAYCASTER</h1>
+    <ul>
+        <li>Move: WASD</li>
+        <li>Look: Mouse</li>
+    </ul>
+    </header>
+    <section>
+        <canvas id="FPView" width="480px" height="320px">
+
+        </canvas>
+        <canvas id="TOPView" width="480px" height="320px">
+            
+        </canvas>
+    </section>
+    
+</body>
+</html>

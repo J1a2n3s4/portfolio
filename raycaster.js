@@ -46,17 +46,28 @@ function darken() {
     }
 }
 
-document.addEventListener("scroll", (event) => { 
-    
-    var articles = document.querySelectorAll("article");
-    console.log(window.scrollY)
-    console.log(articles[0].getBoundingClientRect.top)
-
-    for (let i = 0; i < articles.length; i++) {
-        if(window.scrollY > articles[i].getBoundingClientRect().top){
-            console.log("in")
-            articles[i].classList.add("show");
-            articles[i].style.opacity = "1.0"
-        }
+class Player{
+    xPos;
+    yPos;
+    angle;
+    Player(x,y,a){
+        this.xPos = x;
+        this.yPos = y;
+        this.angle = a;
     }
-})
+}
+
+class Ray{
+    x1;x2;y1;y2;
+}
+
+var map = [
+    [1,1,1,1,1,1,1,1,1,1,1,1],
+    [1,0,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,1,1,0,0,0,0,1],
+    [1,1,0,1,1,1,1,1,1,0,0,1],
+    [1,1,0,0,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,0,0,1,1],
+    [1,0,0,0,0,1,0,1,0,0,1,1],
+    [1,1,1,1,1,1,1,1,1,1,1,1],
+];

@@ -96,9 +96,9 @@ document.addEventListener("DOMContentLoaded", function (arg) {
 
         player01.angle -= movementX * 0.003;
         if (player01.angle > Math.PI * 2) {
-          player01.angle -= Math.PI * 2
-        } else if (player01.angle < 0) {
-          player01.angle += Math.PI * 2
+          player01.angle -= Math.PI * 4
+        } else if (player01.angle < -Math.PI*2) {
+          player01.angle += Math.PI * 4
 
         }
 
@@ -214,58 +214,82 @@ function drawRays() {
   let directionX = Math.cos(-player01.angle);
   let directionY = Math.sin(-player01.angle);
 
-  for (let i = 0; i < 1; i++) {
-
-    //calculating rays
+  for (let i = 0; i < resolution; i++) {
 
     let camA = -player01.angle+Math.PI*1.5 - 0.5 + i/resolution
 
-    //player's grid position
-
-    let rayHitX;
-    let rayHitY;
-
-    let rayOffsetY;
-    let rayOffsetX;
-
+    let gridX = Math.floor(player01.xPos/40)
+    let gridY = Math.floor(player01.yPos/40)
+    
     hit = 0;
 
-    if (camA > Math.PI) {
-      rayHitY = Math.floor(player01.yPos / 40);
-      rayHitX = (player01.yPos - rayHitY) * Math.atan(camA);
-      rayOffsetY = -40;
-      rayOffsetX = -rayOffsetY * Math.atan(camA)
-    }
-    else if (camA < Math.PI) {
-      //check later if not working
+    let dirX = Math.sin(camA);
+    let dirY = Math.cos(camA);
 
-      rayHitY = Math.floor(player01.yPos / 40);
-      rayHitX = (player01.yPos - rayHitY) * Math.atan(camA);
-      rayOffsetY = 40;
-      rayOffsetX = -rayOffsetY * Math.atan(camA)
+    let stepX;
+    let stepY;
+
+    let rayLenX
+    let rayLenY
+
+    let stepsizeX = Math.sqrt(1+(dirY/dirX)*(dirY/dirX));
+    let stepsizeY = Math.sqrt(1+(dirX/dirY)*(dirX/dirY));
+
+    if (dirX < 0){
+      stepX = -1;
+      rayLenX = (player01.xPos - gridX) * stepsizeX;
+    }else{
+      stepX = 1
+      rayLenX = (gridX+1 - player01.xPos) * stepsizeX;
+
     }
+    if (dirY < 0){
+      stepY = -1;
+      rayLenY = (player01.yPos - gridY) * stepsizeY;
+
+    }else{
+      stepY = 1
+      rayLenY = (gridY+1 - player01.yPos) * stepsizeY;
+
+    }
+
+    let collision = false
+
+    let distance
+
+    let dist = 0;
 
     while (hit < 8) {
-      let mx = rayHitX / 40;
-      let my = rayHitY / 40;
+      if(rayLenX < rayLenY){
+          gridX += stepX
+          distance = rayLenX
+          rayLenX += stepsizeX
+        }else{
+          gridY += stepY
+          distance = rayLenY
 
-      let mp = my * 12 + mx;
-
-      if (mp < 96 && map[mp] > 0) {
-        hit = 8;
-      } else {
-        rayHitX += rayOffsetX;
-        rayHitY += rayOffsetY;
-        hit += 1;
+          rayLenY += stepsizeY
       }
 
-      
+      let mp = gridY*12+gridX
+
+      if (mp < 96 && map[mp] > 0) {
+        collision = true
+        hit = 8;
+      }
+
+      hit++;
 
     }
-    topCntxt.beginPath();
-    topCntxt.moveTo(player01.xPos, player01.yPos);
-    topCntxt.lineTo(rayHitX,rayHitY);
-    topCntxt.stroke();
+    if (collision){
+      topCntxt.beginPath();
+      topCntxt.moveTo(player01.xPos, player01.yPos);
+      topCntxt.lineTo(player01.xPos + dirX * distance,player01.yPos + dirY * distance);
+      topCntxt.stroke();
+    }
+    
+
+    
 
   }
 }

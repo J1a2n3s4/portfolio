@@ -57,20 +57,36 @@ class Player {
   }
 }
 
-class Ray {
-  x1; x2; y1; y2;
+class Point{
+  x;
+  y;
+  z;
+
+  constructor(xa,ya,za){
+    this.x=xa;
+    this.y=ya;
+    this.z=za;
+
+  }
 }
 
-var map = [
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-  1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1,
-  1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1,
-  1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-  1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-];
+class Wall{
+
+  p1;
+  p2;
+  p3;
+  p4;
+
+  constructor(point1,point2,point3, point4){
+    this.p1 = point1;
+    this.p2 = point2;
+    this.p3 = point3;
+    this.p4 = point4;
+
+  }
+
+}
+
 var topCanvas;
 var topCntxt;
 var FPCanvas;
@@ -97,8 +113,8 @@ document.addEventListener("DOMContentLoaded", function (arg) {
         player01.angle -= movementX * 0.003;
         if (player01.angle > Math.PI * 2) {
           player01.angle -= Math.PI * 4
-        } else if (player01.angle < -Math.PI*2) {
-          player01.angle += Math.PI * 4
+        } else if (player01.angle < 0) {
+          player01.angle += Math.PI * 2
 
         }
 
@@ -133,22 +149,11 @@ function draw() {
   topCntxt.fillStyle = "rgb(200,200,200)";
   topCntxt.strokeStyle = "rgb(200,200,200)";
   topCntxt.fill();
-  //draw map
-  for (let i = 0; i < 12; i++) {
-    for (let j = 0; j < 8; j++) {
-      if (map[j * 12 + i] == 1) {
-        topCntxt.beginPath()
-        topCntxt.rect(i * 40, j * 40, 40, 40);
-        topCntxt.stroke();
-      }
-    }
-  }
 
   //FP
   FPCntxt.fillStyle = "rgb(10,10,10)";
   FPCntxt.fillRect(0, 0, 480, 320);
 }
-
 
 
 
@@ -210,146 +215,10 @@ window.addEventListener("keyup", function (event) {
 
 }, true);
 
-function drawRays() {
-  let directionX = Math.cos(-player01.angle);
-  let directionY = Math.sin(-player01.angle);
 
-  for (let i = 0; i < resolution; i++) {
-
-    let camA = -player01.angle+Math.PI*1.5 - 0.5 + i/resolution
-
-    let gridX = Math.floor(player01.xPos/40)
-    let gridY = Math.floor(player01.yPos/40)
-    
-    hit = 0;
-
-    let dirX = Math.sin(camA);
-    let dirY = Math.cos(camA);
-
-    let stepX;
-    let stepY;
-
-    let rayLenX
-    let rayLenY
-
-    let stepsizeX = Math.sqrt(1+(dirY/dirX)*(dirY/dirX));
-    let stepsizeY = Math.sqrt(1+(dirX/dirY)*(dirX/dirY));
-
-    if (dirX < 0){
-      stepX = -1;
-      rayLenX = (player01.xPos - gridX) * stepsizeX;
-    }else{
-      stepX = 1
-      rayLenX = (gridX+1 - player01.xPos) * stepsizeX;
-
-    }
-    if (dirY < 0){
-      stepY = -1;
-      rayLenY = (player01.yPos - gridY) * stepsizeY;
-
-    }else{
-      stepY = 1
-      rayLenY = (gridY+1 - player01.yPos) * stepsizeY;
-
-    }
-
-    let collision = false
-
-    let distance
-
-    let dist = 0;
-
-    while (hit < 8) {
-      if(rayLenX < rayLenY){
-          gridX += stepX
-          distance = rayLenX
-          rayLenX += stepsizeX
-        }else{
-          gridY += stepY
-          distance = rayLenY
-
-          rayLenY += stepsizeY
-      }
-
-      let mp = gridY*12+gridX
-
-      if (mp < 96 && map[mp] > 0) {
-        collision = true
-        hit = 8;
-      }
-
-      hit++;
-
-    }
-    if (collision){
-      topCntxt.beginPath();
-      topCntxt.moveTo(player01.xPos, player01.yPos);
-      topCntxt.lineTo(player01.xPos + dirX * distance,player01.yPos + dirY * distance);
-      topCntxt.stroke();
-    }
-    
-
-    
-
-  }
-}
 
 function gameLoop() {
   draw();
-  drawRays();
-  for (let i = 0; i < 12; i++) {
-    for (let j = 0; j < 8; j++) {
-      if (map[j * 12 + i] == 1) {
-
-        //check player's collision for singular block
-        let distX = 0;
-        let distY = 0;
-
-        let left = false;
-        let right = false;
-        let top = false;
-        let bottom = false;
-
-        if (player01.xPos > i * 40 + 40) {
-          distX = player01.xPos - (i * 40 + 40);
-
-          right = true;
-        } else if (player01.xPos < i * 40) {
-          distX = player01.xPos - (i * 40);
-          left = true;
-
-        }
-        if (player01.yPos > j * 40 + 40) {
-          distY = player01.yPos - (j * 40 + 40);
-          bottom = true;
-
-        } else if (player01.yPos < j * 40) {
-          distY = player01.yPos - (j * 40);
-          top = true;
-
-        }
-
-        if (((distX * distX) + (distY * distY)) <= 25) {
-
-          if (right) {
-            player01.xPos += 1;
-
-          } else if (left) {
-            player01.xPos -= 1;
-
-          }
-          if (bottom) {
-            player01.yPos += 1;
-
-          } else if (top) {
-            player01.yPos -= 1;
-
-          }
-        }
-
-      }
-    }
-  }
   if (W) {
     player01.xPos -= Math.sin(player01.angle) * SPEED;
     player01.yPos -= Math.cos(player01.angle) * SPEED;

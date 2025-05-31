@@ -16,7 +16,7 @@ h3{
     margin-top: 0;
     font-size: 2rem;
 }
-a:link{
+a{
     color: gray;
 }
 a:visited{
@@ -136,10 +136,17 @@ div{
     animation-name: show;
     animation-duration: 0.4s;
     animation-timing-function: ease;
+    opacity: 1;
 }
 
 ul{
     position: relative;
     margin: auto;
-    width: 150px;
+    width: 200px;
 }
+
+canvas{
+    margin: 10px;
+    border: 2px dotted white;
+}
+

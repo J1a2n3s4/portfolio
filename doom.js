@@ -49,10 +49,12 @@ function darken() {
 class Player {
   xPos;
   yPos;
+  zPos;
   angle;
-  constructor(x, y, a) {
+  constructor(x, y, z, a) {
     this.xPos = x;
     this.yPos = y;
+    this.zPos = z;
     this.angle = a;
   }
 }
@@ -81,7 +83,7 @@ class block{
     this.origin = origin
     this.w = width
     this.h = height
-    this.l = length
+    this.len = length
 
   }
 
@@ -92,7 +94,9 @@ var topCntxt;
 var FPCanvas;
 var FPCntxt;
 
-var player01 = new Player(100, 100, 2);
+var blocks = [new block(new Point(200,0,0),20,20,100), new block(new Point(100,0,0),20,20,60)]
+
+var player01 = new Player(50,0 ,100, 0);
 var SPEED = 0.5;
 var locked = false
 
@@ -145,10 +149,16 @@ function draw() {
   topCntxt.fillRect(0, 0, 480, 320);
   //draw player
   topCntxt.beginPath();
-  topCntxt.arc(player01.xPos, player01.yPos, 5, 0, 2 * Math.PI);
+  topCntxt.arc(player01.xPos, player01.zPos, 5, 0, 2 * Math.PI);
   topCntxt.fillStyle = "rgb(200,200,200)";
   topCntxt.strokeStyle = "rgb(200,200,200)";
   topCntxt.fill();
+
+  for(let i=0; i<blocks.length; i++){
+    topCntxt.beginPath()
+    topCntxt.rect(blocks[i].origin.x, blocks[i].origin.z, blocks[i].w, blocks[i].len);
+    topCntxt.stroke()
+  }
 
   //FP
   FPCntxt.fillStyle = "rgb(10,10,10)";
@@ -219,21 +229,74 @@ window.addEventListener("keyup", function (event) {
 
 function gameLoop() {
   draw();
+
+  for (let j = 0; j < blocks.length; j++) {
+      //check player's collision for singular block
+
+      let distX = 0;
+      let distY = 0;
+      let left = false;
+      let right = false;
+      let top = false;
+      let bottom = false;
+      if (player01.xPos > blocks[j].origin.x + blocks[j].w) {
+        distX = player01.xPos - (blocks[j].origin.x + blocks[j].w);
+        right = true;
+      } else if (player01.xPos < blocks[j].origin.x) {
+        
+        distX = player01.xPos - (blocks[j].origin.x);
+        left = true;
+      }
+      if (player01.zPos >  blocks[j].origin.z + blocks[j].len) {
+        distY = player01.zPos - (blocks[j].origin.z + blocks[j].len);
+        bottom = true;
+      } else if (player01.zPos < blocks[j].origin.z) {
+        distY = player01.zPos - (blocks[j].origin.z);
+        top = true;
+      }
+
+      
+      if (((distX * distX) + (distY * distY)) <= 25) {
+        if((player01.yPos+0.05)<(blocks[j].origin.y + blocks[j].h)){
+          if (right) {
+          player01.xPos += 1;
+          } else if (left) {
+            player01.xPos -= 1;
+          }
+          if (bottom) {
+            player01.zPos += 1;
+          } else if (top) {
+            player01.zPos -= 1;
+          }
+        }else if((player01.yPos-0.05)<(blocks[j].origin.y + blocks[j].h)){
+          player01.yPos = blocks[j].origin.y + blocks[j].h
+        }
+        
+
+
+      }
+
+
+
+
+
+  }
+
   if (W) {
     player01.xPos -= Math.sin(player01.angle) * SPEED;
-    player01.yPos -= Math.cos(player01.angle) * SPEED;
+    player01.zPos -= Math.cos(player01.angle) * SPEED;
   }
   if (A) {
     player01.xPos -= Math.sin(player01.angle + (Math.PI * 0.5)) * SPEED;
-    player01.yPos -= Math.cos(player01.angle + (Math.PI * 0.5)) * SPEED;
+    player01.zPos -= Math.cos(player01.angle + (Math.PI * 0.5)) * SPEED;
   }
   if (S) {
     player01.xPos -= Math.sin(player01.angle + Math.PI) * SPEED;
-    player01.yPos -= Math.cos(player01.angle + Math.PI) * SPEED;
+    player01.zPos -= Math.cos(player01.angle + Math.PI) * SPEED;
   }
   if (D) {
     player01.xPos -= Math.sin(player01.angle - (Math.PI * 0.5)) * SPEED;
-    player01.yPos -= Math.cos(player01.angle - (Math.PI * 0.5)) * SPEED;
+    player01.zPos -= Math.cos(player01.angle - (Math.PI * 0.5)) * SPEED;
   }
 
   window.requestAnimationFrame(gameLoop);

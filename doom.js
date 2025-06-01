@@ -70,18 +70,18 @@ class Point{
   }
 }
 
-class Wall{
+class block{
 
-  p1;
-  p2;
-  p3;
-  p4;
+  origin;
+  w;
+  h;
+  len;
 
-  constructor(point1,point2,point3, point4){
-    this.p1 = point1;
-    this.p2 = point2;
-    this.p3 = point3;
-    this.p4 = point4;
+  constructor(origin,width, height, length){
+    this.origin = origin
+    this.w = width
+    this.h = height
+    this.l = length
 
   }
 

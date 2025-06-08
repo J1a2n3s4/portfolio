@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doom clone JB</title>
+    <title>Simple 3D JB</title>
     <link rel="stylesheet" href="style.css">
     <script src="doom.js"></script>
 </head>
@@ -13,14 +13,15 @@
         <button type="button" id="darkbutton" onclick="darken()">GO DARK...</button>
     </div>
     <header>
-    <h1>DoomClone</h1>
+    <h1>3D platformer</h1>
     <ul>
         <li>Move: WASD</li>
         <li>Look: Mouse</li>
+        <li>Jump: Space</li>
     </ul>
     </header>
     <section>
-        <canvas id="FPView" width="480px" height="320px">
+        <canvas id="FPView" width="600px" height="300px">
 
         </canvas>
         <canvas id="TOPView" width="480px" height="320px">
@@ -28,5 +29,7 @@
         </canvas>
     </section>
     
+    <p id="debug"></p>
+
 </body>
 </html>

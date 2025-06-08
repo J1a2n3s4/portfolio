@@ -18,7 +18,23 @@ h3{
 }
 a{
     color: gray;
+    background-color: rgba(50, 50, 50, 0.3);
+    padding: 20px;
+    text-decoration: none;
+    transition: 0.2s;
+
 }
+
+a:hover{
+    scale: 1.1;
+    transition: 0.2s;
+    background-color: rgba(50, 50, 50, 0.5);;
+}
+
+a img{
+    width:100%;
+}
+
 a:visited{
     color: rgb(126, 143, 143)cb;
 }
@@ -148,5 +164,6 @@ ul{
 canvas{
     margin: 10px;
     border: 2px dotted white;
+    image-rendering:pixelated;
 }
 

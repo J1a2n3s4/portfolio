@@ -1,169 +1,192 @@
-body{
-    background-image: url("bgpattern.png");
-    overflow-x: hidden;
-    color: white;
-    font-family: courier;
-    width: 100vw;
-}
-h1{
-    font-size: 3rem;
-}
-h2{
-    text-align: center;
-    font-size:3rem;
-}
-h3{
-    margin-top: 0;
-    font-size: 2rem;
-}
-a{
-    color: gray;
-    background-color: rgba(50, 50, 50, 0.3);
-    padding: 20px;
-    text-decoration: none;
-    transition: 0.2s;
-
+@font-face {
+  font-family: Milk;
+  src: url(Milker2.otf);
 }
 
-a:hover{
-    scale: 1.1;
-    transition: 0.2s;
-    background-color: rgba(50, 50, 50, 0.5);;
+@keyframes darken {
+  0%   {filter: brightness(100%);}
+  100% {filter: brightness(10%);}
 }
 
-a img{
-    width:100%;
+@keyframes up {
+  0%   {transform: translate(0,-500%);}
+  100% {transform: translate(0,0);}
 }
 
-a:visited{
-    color: rgb(126, 143, 143)cb;
-}
-
-p{
-    width: 50%;
-    margin-bottom: 30px;
-    height: 30%;
-    
+@keyframes down {
+  0%   {transform: translate(0,500%);}
+  100% {transform: translate(0,0);}
 }
 
 
-main{
+@keyframes left {
+  0%   {transform: translate(-500%,0);}
+  100% {transform: translate(0,0);}
+}
+
+@keyframes right {
+  0%   {transform: translate(500%,0);}
+  100% {transform: translate(0,0);}
+}
+
+.Gallery{
     width: 100%;
-    padding-top: 20px;
-
-}
-
-iframe{
-    float: right;
-    margin: auto;
-    bottom: 0;
-}
-
-article{
     display: flex;
-    background-color: rgba(20,20,20,0.5);
-    padding: 30px;
-    width: 1000px;
-    height: 300px;
-    margin: 50px;
-    opacity: 0.0;
-}
-
-section{
-    align-items: center;
     justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    transform: translate(0,0);
+    animation-name: down;
+    animation-duration: 1s;
 }
 
-header{
-    padding: 40px;
-    background-color: #1a1d1a;
-    color: aliceblue;
+body{
+    background: url("bg.png");
+    color: azure;
+    font-family: Milk; 
+    font-style: normal;
+    letter-spacing: 3px;
+}
+
+
+h1{
     text-align: center;
+    font-size: 70px;
+    margin-bottom: 50px;
+    margin-top: 200px;
 }
 
-#lightbutton{
-    background-color: lightgrey;
-    color: black;
-    font-family: 'monospace';
-    border: 0;
-    border-radius: 10%;
-    font-weight: 600;
-    padding: 10px;
-    transition: 0.4s;
-}
-#lightbutton:hover{
-    background-color: white;
-    cursor: pointer;
-    transition: 0.4s;
-
-    scale: 1.1;
-
-}
-#darkbutton{
-    display: none;
-    background-color: rgb(20, 20, 20);
-    color: whitesmoke;
-    font-family: 'monospace';
-    border: 0;
-    border-radius: 10%;
-    font-weight: 600;
-    padding: 10px;
-    transition: 0.4s;
-
-
-}
-#darkbutton:hover{
-    background-color: black;
-    cursor: pointer;
-    transition: 0.4s;
-    scale: 1.1;
-}
-
-#light_changes {
-    position: fixed;
-    width:80px;
-    display: flex;
-    flex-wrap: wrap;
-    top: 10px;
-    right: 10px;
-    border: 5px solid rgba(10, 10, 10, 0.3);
-    background-color: rgba(10, 10, 10, 0.3);;
-    padding: 10px;
+.GImg{
+    width: 100%;
+    height: 800px;
+    object-fit: cover;
 }
 
 div{
+    width: 20%;
+    margin: 5px;
+    transition: 1s;
+    filter: brightness(50%);
+
+}
+
+div:hover{
     width: 50%;
-    height: auto;
+    filter: brightness(100%);
+    transition: 1s;
+    cursor: pointer;
 }
 
-
-@keyframes show{
-    from{
-        transform: translateY(1000px);
-    }
-    to{
-        transform: translateY(0);
-
-    }
-}
-.show{
-    animation-name: show;
-    animation-duration: 0.4s;
-    animation-timing-function: ease;
-    opacity: 1;
-}
-
-ul{
-    position: relative;
+#About{
+    display: block;
     margin: auto;
+    width: 50%;
+    transform: translate(0,0);
+    animation-name: left;
+    animation-duration: 1s;
+}
+
+h2{
+    text-align: justify;
+}
+
+header {
+    transform: translate(0,0);
+    animation-name: up;
+    animation-duration: 0.7s;
+}
+
+#Viewer{
+    padding: 50px;
+    position: fixed;
+    display: none;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(14, 14, 14, 0.862);
+
+}
+
+#ImageView{
+    width: 50%;
+    height: 70%;
+    margin: 5%;
+    display: block;
+    border: 0;
+    object-fit: contain;
+    outline: none;
+}
+
+#DescView{
+    padding: 50px;
+    width: 40%;
+    height: 40%;
+    margin: 0%;
+    margin-top: 9%;
+    margin-bottom: auto;
+}
+
+h3{
+    font-size: 40px;
+}
+p{
+    width: 50%;
+    font-size: 20px;
+}
+
+
+input[type="button"]{
+    display: block;
+    margin: auto;
+    margin-left: 0%;
+    margin-top: 10%;
     width: 200px;
+    font-size: large;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.861);
+    color: aliceblue;
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.895);
+    transition: 1s;
+
+    margin-bottom: 0;
+    
 }
 
-canvas{
-    margin: 10px;
-    border: 2px dotted white;
-    image-rendering:pixelated;
+input[type="button"]:hover{
+    border: 1px solid white;
+    cursor: pointer;
+    scale: 1.1;
+    transition: 1s;
+    
 }
 
+video{
+    margin: 5%;
+    transition: 0.5s;
+    filter: brightness(90%);
+}
+
+video:hover{
+    margin: 5%;
+    scale: 1.05;
+    transition: 0.1s;
+    filter: brightness(100%);
+
+}
+
+footer{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.727);
+    height: 100px;
+}
+
+h4{
+    font-size: medium;
+    color: rgba(240, 248, 255, 0.664);
+    text-align: center;
+    display: block;
+    margin: auto;
+    height: 100%;
+    line-height: 100px;
+}

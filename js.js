@@ -1,62 +1,42 @@
-function lighten() {
-
-    var buttonlight = document.querySelector("#lightbutton");
-    var buttondark = document.querySelector("#darkbutton");
-
-    buttonlight.style.display = "none";
-    buttondark.style.display = "block";
-
-    var articles = document.querySelectorAll("article");
-    var header = document.querySelector("header");
-    var body = document.querySelector("body");
-    header.style.backgroundColor = "lightgray";
-    header.style.color = "#1a1d1a";
-    body.style.backgroundImage = 'Url("bgpattern_light.png")';
-
-    body.style.color = "#1a1d1a";
-
-    for (let i = 0; i < articles.length; i++) {
-        const element = articles[i];
-        element.style.backgroundColor = "lightgray";
-        element.style.color = "#1a1d1a";
-    }
-}
-
-function darken() {
-
-    var buttonlight = document.querySelector("#lightbutton");
-    var buttondark = document.querySelector("#darkbutton");
-
-    buttonlight.style.display = "block";
-    buttondark.style.display = "none";
-
-    var articles = document.querySelectorAll("article");
-    var header = document.querySelector("header");
-    var body = document.querySelector("body");
-    header.style.backgroundColor = "#1a1d1a";
-    header.style.color = "white";
-    body.style.backgroundImage = 'Url("bgpattern.png")';
-
-    body.style.color = "white";
-
-    for (let i = 0; i < articles.length; i++) {
-        const element = articles[i];
-        element.style.backgroundColor = "rgba(20,20,20,0.5)";
-        element.style.color = "white";
-    }
-}
-
-document.addEventListener("scroll", (event) => { 
+var properties = [
+    {imgSrc: 'portfolio_graphics/19_02.png', desc: "A simple poster of Porsche 959. I love this car.", imgName: "PORSCHE POSTER"},
+    {imgSrc: 'portfolio_graphics/20_02.png', desc: "My attempt to make something more surreal.", imgName: "DEER POSTER"},
+    {imgSrc: 'portfolio_graphics/21_02.png', desc: "Another try. This time it has a bit more character!", imgName: "DECISION POSTER"},
+    {imgSrc: 'portfolio_graphics/22_02.png', desc: "A cover for an OLDTIME magazine. I got inspired by covers of the CLASSICAUTO paper.", imgName: "BUGATTI COVER"},
+    {imgSrc: 'portfolio_graphics/24_02.png', desc: "My idea for Animal Farm book cover.", imgName: "BOOK COVER"},
+    {imgSrc: 'portfolio_graphics/25_02.png', desc: "A poster for the school jam session.", imgName: "CONCERT POSTER"},
     
-    var articles = document.querySelectorAll("article");
-    console.log(window.scrollY)
-    console.log(articles[0].getBoundingClientRect.top)
+]
 
-    for (let i = 0; i < articles.length; i++) {
-        if(window.scrollY > articles[i].getBoundingClientRect().top){
-            console.log("in")
-            articles[i].classList.add("show");
-            articles[i].style.opacity = "1.0"
-        }
-    }
-})
+var viewer
+var imger
+var desc
+var namet
+var main
+
+window.onload = init
+
+function init(){
+    viewer = document.getElementById("Viewer")
+    main = document.querySelector("main")
+    imger = document.getElementById("ImageView")
+    desc = document.getElementById("desc")
+    namet = document.querySelector("h3")
+
+    
+}
+
+
+
+
+function show(propertyId){
+    viewer.style.display = "flex"
+    namet.innerHTML = properties[propertyId].imgName
+    desc.innerHTML = properties[propertyId].desc
+    imger.src = properties[propertyId].imgSrc
+
+}
+
+function closeView(){
+    viewer.style.display = "none"
+}

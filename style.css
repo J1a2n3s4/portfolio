@@ -192,7 +192,7 @@ h4{
     line-height: 100px;
 }
 
-@media screen and (width <= 900px) {
+@media screen and (width <= 1200px) {
   #Viewer{
     flex-direction: column;
   }

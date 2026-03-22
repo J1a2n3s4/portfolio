@@ -194,10 +194,8 @@ var locked = false
 
 var onFloor = false
 
-var debug
 
 document.addEventListener("DOMContentLoaded", function (arg) {
-  debug = document.querySelector("#debug");
   topCanvas = document.getElementById("TOPView");
   topCntxt = topCanvas.getContext("2d");
   FPCanvas = document.getElementById("FPView");
@@ -463,8 +461,6 @@ window.addEventListener("keyup", function (event) {
 
 function gameLoop() {
   draw();
-
-  debug.innerHTML = player01.velocity.y;
   
 
   player01.velocity.y -= 0.01

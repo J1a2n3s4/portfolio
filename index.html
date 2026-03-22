@@ -6,71 +6,85 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="js.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Squada+One&display=swap" rel="stylesheet">
-    <title>JB PORTFOLIO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <title>ONLINE CV - Jędrzej Burczyński</title>
 </head>
 <body>
-   
-    <main id="blurred">
-        <header>
-        <h1 style="font-size: 92px;">JĘDRZEJ BURCZYŃSKI</h1>
-        <h2 style="text-align: center;">PORTFOLIO</h2>
-        </header>
+    <main>
+        <article id="l_article">
+            <img src="profile.png" alt="">
 
-        <article id="About">
-            <h1 style="text-align: left;">Hello,</h1>
-            <h2>
-                I'm Jędrzej. A programmer, 3D/2D graphic designer and a game developer. Apart from my abilities as a technical person,
-                I also have a passion for music and cars. 
-                My main goal in everything I create is to make it as creative and eye-cathing as possible. That's why I have a habit of really focusing on my projects.
-                I have done many solo projects with intention of achieving group project quality, so it is true to say that I am an ambitious person.
+            <div class="padder">
+                <h3>Umiejętności</h3>
+                <ul>
+                    <li class="split-para">Freecad <span>&#9733;&#9733;</span></li>
+                    <li class="split-para">Blender <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span></li>
+                    <li class="split-para">Programowanie WEB <span>&#9733;&#9733;&#9733;</span></li>
+                    <li class="split-para">Programowanie APLIKACJI <span>&#9733;&#9733;&#9733;&#9733;</span></li>
+                    <li class="split-para">GIMP/PHOTOSHOP <span>&#9733;&#9733;&#9733;&#9733;</span></li>
+                    <li class="split-para">montaż filmów <span>&#9733;&#9733;&#9733;</span></li>
+                </ul>
 
-            </h2>
-            
+                <h3>DOŚWIADCZENIE</h3>
+                <ul>
+                    <li>Grafika 2D/3D: 4 lata</li>
+                    <li>Programowanie: 6 lat</li>
+                    <li>Wykonywanie zleceń: 2 lata</li>
+                </ul>
+
+                <h3>PORTFOLIO</h3>
+                <ul>
+                    <li>Liczne <a href="">projekty graficzne</a></li>
+                    <li>gra komputerowa <a href="https://www.youtube.com/watch?v=9jHc0uEjxrc">NIGHTMERC</a></li>
+                    <li>Projekty na <a href="">githubie</a></li>
+                    
+                </ul>
+
+                <div id="mini_gallery">
+                    <img src="portfolio_graphics/25_02.png" alt="">
+                    <img src="portfolio_graphics/21_02.png" alt="">
+                    
+                </div>
+            </div>
         </article>
 
-        <h1 style="animation: right 2s;">PROJECT GALLERY:</h1>
-        <article class="Gallery">
-            <div onclick="show(0)"><img class="GImg" src="portfolio_graphics/19_02.png"></div>
-            <div onclick="show(1)"><img class="GImg" src="portfolio_graphics/20_02.png"></div>
-            <div onclick="show(2)"><img class="GImg" src="portfolio_graphics/21_02.png"></div>
-            <br>
-        </article>
+        <article id="r_article">
+            <header>
+                <h1>JĘDRZEJ BURCZYŃSKI</h1>
+                <h3>Grafik, programista.</h3>
+            </header>
 
-        <article class="Gallery">
-            <div onclick="show(3)"><img class="GImg" src="portfolio_graphics/22_02.png"></div>
-            <div onclick="show(4)"><img class="GImg" src="portfolio_graphics/24_02.png"></div>
-            <div onclick="show(5)"><img class="GImg" src="portfolio_graphics/25_02.png"></div>
-            <br>
-        </article>
-             
-        <article class="Gallery"> 
-            <video width="40%" height="auto" autoplay loop>
-                <source src="portfolio_graphics/0001-0300.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video> 
-        </article>
-        <article class="Gallery">  
-            <video width="40%" height="auto"  id="trailer" autoplay muted loop>
-                <source src="portfolio_graphics/NIGHTMERC Teaser.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </article>
+            <section>
+                <h2>
+                    Coś o mnie
+                </h2>
+                <p>
+                    Urodziłem się 20 października 2007 roku w Szczecinie. Po ukończeniu szkoły podstawowej dostałem się do Szczecińskiego Collegium Informatycznego, aktualnie 10. najlepszego technikum w Polsce.
+                    <br>Tam kształcę się w zakresie zawodu programisty, a w wolnym czasie działam jako grafik szkolny.
+                    <br>Oprócz zainteresowania nauką w szkole, pasjonuje się graniem na gitarze, motoryzacją i Game Developmentem.
+                    <br>
+                    Pod koniec ostatniego roku szkolnego byłem finalistą konkursu SCI++. Zdobyłem wyróżnienie od firmy Spyrosoft i miałem możliwość przedstawienia projektu na konkurs pod tytułem <a style="color:rgb(254, 255, 240)" href="https://www.youtube.com/watch?v=mixP8KyONyM">NIGHTMERC.</a>
+                </p>
 
-        <article>
+                <a style="color:rgb(254, 255, 240)" href=""><h3 id="small_big_text">GALERIA</h3></a>
+                
+                <a style="color:rgb(254, 255, 240); " href=""><h3 id="small_big_text">GITHUB</h3></a>
+                <a style="color:rgb(254, 255, 240); " href="doom.html"><h3 id="small_big_text">WEBOWE 3D</h3></a>
+
+            </section>
 
         </article>
-
+        
     </main>
 
-    <section id="Viewer">
-        <img id="ImageView"></img><article id="DescView"><h3>Name</h3><p id="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum impedit tenetur a illo distinctio voluptatem corporis, obcaecati ipsam consequatur, veritatis sapiente reiciendis atque quam. Modi voluptates non rerum dolores deserunt!</p><input type="button" onclick="closeView()" value="CLOSE"></article>
-    </section>
-
-
+    
     <footer>
-        <h4>Jędrzej Burczyński 2026</h4>
+        <br>
+        <h2>Jędrzej Burczyński 2026</h2>
     </footer>
 
 

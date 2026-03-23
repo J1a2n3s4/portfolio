@@ -215,7 +215,7 @@ footer{
     }
 
     p{
-        font-size: 4vw;
+        font-size: 3.6vw;
     }
 
     h2{
@@ -227,7 +227,7 @@ footer{
     }
 
     h4{
-        font-size: 10vw;
+        font-size: 8vw;
     }
 
     nav{
@@ -271,9 +271,9 @@ footer{
     }
 
     #small_big_text{
-    font-size: 6vw;
+    font-size: 4vw;
     margin: 0;
-    margin-right: 10px;
+    margin-left: 10px;
     display: inline;
     letter-spacing: 5px;
     color: #e5dfba;

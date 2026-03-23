@@ -218,8 +218,16 @@ footer{
         font-size: 4vw;
     }
 
-    h4{
+    h2{
         font-size: 4vw;
+    }
+
+    h3{
+        font-size: 4vw;
+    }
+
+    h4{
+        font-size: 10vw;
     }
 
     nav{
@@ -261,5 +269,15 @@ footer{
         filter: saturate(0);
         filter:sepia(100%);
     }
+
+    #small_big_text{
+    font-size: 6vw;
+    margin: 0;
+    margin-right: 10px;
+    display: inline;
+    letter-spacing: 5px;
+    color: #e5dfba;
+    }
+
     
 }

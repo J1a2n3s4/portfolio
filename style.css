@@ -130,3 +130,86 @@ h2{
         font-size: 4vw;
     }
 }
+
+@media screen and (width <= 900px) {
+  #Viewer{
+    flex-direction: column;
+  }
+
+  #ImageView{
+    height: auto;
+    width: 70%;
+    object-fit: contain;
+    margin-bottom: 5%;
+  }
+
+  #DescView{
+    height: 50%;
+    width: 70%;
+  }
+
+  #desc{
+    display: none;
+  }
+
+  h2{
+    font-size: medium;
+  }
+
+  h3{
+    display: none;
+  }
+  input[type="button"]{
+    display: block;
+    margin: auto;
+    margin-top: -5%;
+    width: 200px;
+    font-size: large;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.861);
+    color: aliceblue;
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.895);
+    transition: 1s;
+
+    margin-bottom: 0;
+    
+}
+
+input[type="button"]:hover{
+    border: 1px solid white;
+    cursor: pointer;
+    scale: 1.1;
+    transition: 1s;
+    
+}
+
+video{
+    margin: 5%;
+    transition: 0.5s;
+    filter: brightness(90%);
+}
+
+video:hover{
+    margin: 5%;
+    scale: 1.05;
+    transition: 0.1s;
+    filter: brightness(100%);
+
+}
+
+footer{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.727);
+    height: 100px;
+}
+
+h4{
+    font-size: medium;
+    color: rgba(240, 248, 255, 0.664);
+    text-align: center;
+    display: block;
+    margin: auto;
+    height: 100%;
+    line-height: 100px;
+}

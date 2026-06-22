@@ -53,6 +53,13 @@ article{
 #r_article{
     width: 70%;
 }
+.r_a{
+    color: rgb(185, 185, 185);
+}
+
+.r_a:hover{
+    color: rgb(174, 174, 224);
+}
 
 #l_article{
     width: 30%;
@@ -179,13 +186,9 @@ footer{
     object-fit: cover;
     scale: 1;
     transition: 1s;
-    filter: saturate(0);
-    filter:sepia(100%);
 }
 
 .rotation_img:hover{
-    filter: saturate(100%);
-    filter:sepia(0);
 
     scale: 1.1;
     width: 20vw;
@@ -228,6 +231,7 @@ footer{
 
     h4{
         font-size: 8vw;
+        color: #0c0c0c;
     }
 
     nav{
@@ -245,8 +249,6 @@ footer{
     flex-direction: column;
     }
     .rotation_img:hover{
-    filter: saturate(100%);
-    filter:sepia(0);
 
     scale: 1.1;
     height: 20vh;
@@ -255,7 +257,6 @@ footer{
     margin-right: 2vw;
     transition: 0.5s;
     cursor: pointer;
-    box-shadow: 0px 0px 1000px 10px rgb(255, 255, 255) ;
     }
 
     .rotation_img{
@@ -266,8 +267,6 @@ footer{
         object-fit: cover;
         scale: 1;
         transition: 1s;
-        filter: saturate(0);
-        filter:sepia(100%);
     }
 
     #small_big_text{
@@ -280,4 +279,70 @@ footer{
     }
 
     
+}
+@media(prefers-color-scheme: dark){
+    body
+    {
+        background-color: rgb(38, 38, 38);
+        color: #f0f0f0;
+    }
+
+    .rotation_img{
+        filter:sepia(100%);
+
+
+
+    }
+    .rotation_img:hover{
+        filter:sepia(0);
+        box-shadow: 0px 0px 1000px 10px rgb(255, 255, 255) ;
+
+
+    }
+}
+@media(prefers-color-scheme: light){
+    body
+    {
+        background-color: rgb(221, 221, 221);
+        color: #0c0c0c;
+    }
+
+    #small_big_text{
+        color: #0c0c0c;
+    }
+    footer{
+        background-color: rgba(206, 206, 206, 0.727);
+    }
+    h4 a{
+        color: #0c0c0c;
+    }
+    #l_article{
+        background-color: rgb(155, 186, 212);
+
+    }
+
+    #profile{
+
+        filter:hue-rotate(150deg);
+    }
+    .r_a{
+        color: #0c0c0c;
+    }
+
+
+    .rotation_img{
+        filter: sepia(0);
+        filter: grayscale(100%);
+    }
+
+    .rotation_img:hover{
+        filter: sepia(0);
+        filter: grayscale(0);
+        box-shadow: 0px 0px 1000px 10px rgb(0, 0, 0) ;
+
+    }
+
+    #g_body{
+        background-color: rgb(208, 224, 238);
+    }
 }

@@ -135,7 +135,7 @@ input[type="button"]:hover{
     border: 1px solid white;
     cursor: pointer;
     scale: 1.1;
-    transition: 1s;
+    transition: 0.5s;
     
 }
 
@@ -147,7 +147,7 @@ video{
 
 video:hover{
     scale: 1.0;
-    transition: 0.1s;
+    transition: 0.5s;
     filter: brightness(100%);
 
 }
@@ -186,7 +186,7 @@ footer{
     width: 14vw;
     object-fit: cover;
     scale: 1;
-    transition: 1s;
+    transition: 0.5s;
 }
 
 
@@ -244,10 +244,10 @@ footer{
         margin: 1vw;
         border-radius: 10px;
         height: 60vh;
-        width: 50vw;
+        width: 80vw;
         object-fit: cover;
         scale: 1;
-        transition: 1s;
+        transition: 0.5s;
     }
 
     #small_big_text{
